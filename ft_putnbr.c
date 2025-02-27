@@ -14,33 +14,35 @@
 
 int	ft_putnbr(int n)
 {
-	char	c;
-	char	sign;
-	static int		len = 0; // allowed ?
+	int	len;
 
-	sign = '-';
 	if (n == -2147483648)
+		ft_putstr("-2147483648");
+	if (n < 0)
 	{
-		write(0, "-2147483648", 11);
-		return (11);
+		if (ft_putchar('-') == -1)
+			return (-1);
+		len = ft_putnbr(-n);
+		if (len == -1)
+			return (-1);
+		return (len + 1);
 	}
-	else if (n < 0)
+	len = 0;
+	if (n > 9)
 	{
-		write(0, &sign, 1);
-		len++;
-		n = -n;
-		ft_putnbr(n);
+		len = ft_putnbr(n / 10);
+		if (len == -1)
+			return (-1);
 	}
-	else if (n < 10)
-	{	
-		c = n + '0';
-		write(0, &c, 1);
-		len++;
-	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
-	}
-	return (len);
+	if (ft_putchar(n % 10 + '0') == -1)
+		return (-1);
+	return (len + 1);
 }
+
+/*int	main(void)
+{
+	int	result1;
+
+	result1 = ft_printf("ft_printf : %d\n", 24);
+	printf("The return (value\nft_printf : %d", result1));
+}*/

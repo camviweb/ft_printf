@@ -15,10 +15,15 @@
 # include <stdlib.h> // malloc et free
 # include <unistd.h> // write
 
-int	ft_printf(const char *, ...);
+int	ft_printf(const char *s, ...);
 int	ft_strlen(char *str);
 int	ft_putchar(char c);
+int	ft_putptr(unsigned long long ptr);
 int	ft_putstr(char *s);
 int	ft_putnbr(int n);
+int	ft_putunbr(unsigned int n);
+int	ft_putlx(unsigned int n);
+int	ft_putux(unsigned int n);
+int	do_format(const char *s, va_list args, int i);
 
 #endif

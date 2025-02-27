@@ -17,30 +17,55 @@ int	ft_printf(const char *s, ...)
 	va_list	args;
 	int		len;
 	int		i;
+	int		tmp;
 
+	if(!s || *s == '\0')
+		return (0);
 	len = 0;
 	i = 0;
 	va_start(args, s);
 	while (s[i])
 	{
 		if (s[i] == '%')
-		{
-			i++;
-			if (s[i] && s[i] == 'c')
-				len += ft_putchar((char)va_arg(args, int));
-			else if (s[i] && s[i] == 's')
-				len += ft_putstr(va_arg(args, char *));
-			else if (s[i] == '\0')
-				len += ft_putchar('%'); // pas authorise
-			else if (s[i] && s[i] == 'd')
-				len += ft_putnbr(va_arg(args, int));
-			else if (s[i] && s[i] == '%')
-				len += ft_putchar('%');
-		}
+			tmp = do_format(s, args, ++i);
 		else
-			len += ft_putchar(s[i]);
+			tmp = ft_putchar(s[i]);
+		if (tmp == -1)
+			return (-1);
+		len += tmp;
 		i++;
 	}
 	va_end(args);
-	return (len); // error management with -1
+	return (len);
+}
+
+int	do_format(const char *s, va_list args, int i)
+{
+	int	tmp;
+	int	tmp2;
+
+	tmp = 0;
+	tmp2 = 0;
+	if (s[i] && s[i] == 'c')
+		tmp = ft_putchar(va_arg(args, int));
+	else if (s[i] && s[i] == 's')
+		tmp = ft_putstr(va_arg(args, char *));
+	else if (s[i] && s[i] == 'p')
+	{
+		tmp2 = ft_putstr("0x");
+		tmp = tmp2 + ft_putptr(va_arg(args, unsigned long long));
+	}
+	else if (s[i] && s[i] == 'd')
+		tmp = ft_putnbr(va_arg(args, int));
+	else if (s[i] && s[i] == 'u')
+		tmp = ft_putunbr(va_arg(args, unsigned int));
+	else if (s[i] && s[i] == 'x')
+		tmp = ft_putlx(va_arg(args, unsigned int));
+	else if (s[i] && s[i] == 'X')
+		tmp = ft_putux(va_arg(args, unsigned int));
+	else if (s[i] && s[i] == '%')
+		tmp = ft_putchar('%');
+	if (tmp == -1 || tmp2 == -1)
+		return (-1);
+	return (tmp);
 }

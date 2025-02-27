@@ -15,6 +15,6 @@
 int	ft_putchar(char c)
 {
 	if (write(0, &c, 1) == -1)
-		return (-1); // pas utilise ?
+		return (-1);
 	return (1);
 }

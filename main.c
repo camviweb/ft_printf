@@ -6,8 +6,10 @@ int	main(void)
 	unsigned int	i;
 	int	result1;
 	int result2;
+	char	*ptr;
 
-	i = -1;
+	i = 1;
+	ptr = "hello";
 
 	printf("\n---Without format specifiers---\n");
 	result1 = ft_printf("ft_printf : hello world\n");
@@ -24,14 +26,19 @@ int	main(void)
 	result2 = printf("printf : %s\n", "hello");
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
-	printf("---A pointer---\n"); // hard
-	result1 = ft_printf("ft_printf : %s\n", "hello");
-	result2 = printf("printf : %p\n", "hello");
+	printf("---A pointer---\n");
+	result1 = ft_printf("ft_printf : %p\n", ptr);
+	result2 = printf("printf : %p\n", ptr);
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
 	printf("---A decimal---\n");
 	result1 = ft_printf("ft_printf : %d\n", 24);
 	result2 = printf("printf : %d\n", 24);
+	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
+
+	printf("---A decimal 2---\n");
+	result1 = ft_printf("ft_printf : %d\n", 2147483647);
+	result2 = printf("printf : %d\n", 2147483647);
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
 	printf("---An integer---\n");
@@ -40,17 +47,17 @@ int	main(void)
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
 	printf("---An unsigned decimal---\n"); // si nb negatif, nb immense; sinon normal
-	result1 = ft_printf("ft_printf : %d\n", 24);
+	result1 = ft_printf("ft_printf : %u\n", i);
 	result2 = printf("printf : %u\n", i); 
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
-	printf("---A number in hexa lowercase---\n"); // hard
-	result1 = ft_printf("ft_printf : %d\n", 300);
+	printf("---A number in hexa lowercase---\n");
+	result1 = ft_printf("ft_printf : %x\n", 300);
 	result2 = printf("printf : %x\n", 300);
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
-	printf("---A number in hexa uppercase---\n"); // hard 
-	result1 = ft_printf("ft_printf : %d\n", 300);
+	printf("---A number in hexa uppercase---\n");
+	result1 = ft_printf("ft_printf : %X\n", 300);
 	result2 = printf("printf : %X\n", 300);
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
