@@ -24,6 +24,5 @@ int	ft_putnbr(int n);
 int	ft_putunbr(unsigned int n);
 int	ft_putlx(unsigned int n);
 int	ft_putux(unsigned int n);
-int	do_format(const char *s, va_list args, int i);
 
 #endif
