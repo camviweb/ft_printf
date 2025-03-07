@@ -1,6 +1,6 @@
-CFLAGS	=-Wall -Wextra -Werror
-CC	=cc $(CFLAGS)
-NAME	=libftprintf.a
+CFLAGS	= -Wall -Wextra -Werror
+CC	= gcc $(CFLAGS)
+NAME	= libftprintf.a
 
 all: $(NAME)
 
@@ -12,10 +12,10 @@ $(NAME): ft_printf.o \
 	ft_putstr.o \
 	ft_putunbr.o \
 	ft_putux.o 
-	ar rcs -o $@ $^ 
+	ar rcs $@ $^ 
 
 %.o: %.c
-	$(CC) -o $@ -c $<
+	$(CC) -I. -o $@ -c $<
 
 clean: 
 	rm -f *.o
