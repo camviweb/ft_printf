@@ -12,6 +12,8 @@
 
 #include "ft_printf.h"
 
+static int	do_format(const char *s, va_list args, int i);
+
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
@@ -19,7 +21,7 @@ int	ft_printf(const char *s, ...)
 	int		i;
 	int		tmp;
 
-	if(!s || *s == '\0')
+	if(!s)
 		return (0);
 	len = 0;
 	i = 0;
@@ -30,8 +32,10 @@ int	ft_printf(const char *s, ...)
 			tmp = do_format(s, args, ++i);
 		else
 			tmp = ft_putchar(s[i]);
-		if (tmp == -1)
+		if (tmp == -1){
+			va_end(args);
 			return (-1);
+		}
 		len += tmp;
 		i++;
 	}
@@ -39,7 +43,7 @@ int	ft_printf(const char *s, ...)
 	return (len);
 }
 
-int	do_format(const char *s, va_list args, int i)
+static int	do_format(const char *s, va_list args, int i)
 {
 	int	tmp;
 	int	tmp2;
@@ -53,6 +57,8 @@ int	do_format(const char *s, va_list args, int i)
 	else if (s[i] && s[i] == 'p')
 	{
 		tmp2 = ft_putstr("0x");
+		if (tmp2 == -1)
+    			return (-1);
 		tmp = tmp2 + ft_putptr(va_arg(args, unsigned long long));
 	}
 	else if (s[i] && s[i] == 'd')
