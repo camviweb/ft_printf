@@ -8,9 +8,9 @@
 - [ ] yes %p The void * pointer argument has to be printed in hexadecimal format. (Print the address of a pointer or any other variable. It's a format specifier which is used if we want to print data of type (void *))
 
 ## To test
-- [ ] norminette
-- [ ] file names/git repo
-- [ ] guidelines -> main
-- [ ] valgrind (no leaks)
-- [ ] "your Makefile must not relink"
-- [ ] Your libftprintf.a has to be created at the root of your repository.
+- [x] norminette
+- [x] file names/git repo
+- [-] guidelines -> main
+- [x] valgrind (no leaks)
+- [x] "your Makefile must not relink"
+- [x] Your libftprintf.a has to be created at the root of your repository.
