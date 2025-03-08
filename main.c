@@ -7,9 +7,11 @@ int	main(void)
 	int	result1;
 	int result2;
 	char	*ptr;
+	int	int_min;
 
 	i = 1;
-	ptr = "hello";
+	ptr = 0;
+	int_min =-2147483648;
 
 	printf("\n---Without format specifiers---\n");
 	result1 = ft_printf("ft_printf : hello world\n");
@@ -37,13 +39,13 @@ int	main(void)
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
 	printf("---A decimal 2---\n");
-	result1 = ft_printf("ft_printf : %d\n", 2147483647);
-	result2 = printf("printf : %d\n", 2147483647);
+	result1 = ft_printf("ft_printf : %d\n", int_min);
+	result2 = printf("printf : %d\n", int_min);
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
 	printf("---An integer---\n");
-	result1 = ft_printf("ft_printf : %d\n", 24);
-	result2 = printf("printf : %i\n", 24); // diff avec %d
+	result1 = ft_printf("ft_printf : %i\n", 0x24);
+	result2 = printf("printf : %i\n", 0x24);
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
 
 	printf("---An unsigned decimal---\n"); // si nb negatif, nb immense; sinon normal
@@ -63,8 +65,6 @@ int	main(void)
 
 	printf("---A percent sign---\n");
 	result1 = ft_printf("ft_printf : %%\n");
-	result2 = printf("printf : %%\n"); // pas d'arguments ?
+	result2 = printf("printf : %%\n");
 	printf("The return value\nft_printf : %d | printf : %d\n\n", result1, result2);
-
-	// longue phrase
 }
