@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: canguyen <canguyen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 15:34:18 by canguyen          #+#    #+#             */
-/*   Updated: 2024/12/07 13:04:48 by canguyen         ###   ########.fr       */
+/*   Created: 2025/03/08 14:26:47 by canguyen          #+#    #+#             */
+/*   Updated: 2025/03/08 14:26:49 by canguyen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_putnbr(int n)
 	int	len;
 
 	if (n == -2147483648)
-		ft_putstr("-2147483648");
+		return (ft_putstr("-2147483648"));
 	if (n < 0)
 	{
 		if (ft_putchar('-') == -1)
@@ -38,11 +38,3 @@ int	ft_putnbr(int n)
 		return (-1);
 	return (len + 1);
 }
-
-/*int	main(void)
-{
-	int	result1;
-
-	result1 = ft_printf("ft_printf : %d\n", 24);
-	printf("The return (value\nft_printf : %d", result1));
-}*/
